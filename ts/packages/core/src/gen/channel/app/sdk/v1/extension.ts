@@ -2316,8 +2316,10 @@ export interface MessagingSendResult {
     | string
     | undefined;
   /**
-   * Optional app-owned error code. To persist delivery errors on the Channel
-   * message, use patchMessage with errorCode in the update mask.
+   * Optional app-owned error code. Returning this field does not persist it
+   * on the Channel message. To report a final delivery failure, use patchMessage
+   * with mediumSyncState=MEDIUM_SYNC_STATE_FAILED and errorCode, including
+   * both fields in the update mask.
    */
   errorCode?: number | undefined;
 }
